@@ -2,36 +2,27 @@
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
-    <!-- Permite site-ului să folosească ecranul complet -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    
-    <!-- Elimină zona gri de sus și o face Albă (la fel ca header-ul) -->
-    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
-    <!-- Elimină zona gri de jos și o face Roz (la fel ca footer-ul) -->
-    <meta name="theme-color" content="#FCE6E6" media="(prefers-color-scheme: dark)">
-    <!-- Notă: Pentru a forța ambele nuanțe simultan pe iOS, combinăm nuanța principală -->
-    <meta name="theme-color" content="#ffffff">
-
     <title>BioGloss</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Header fix: Rămâne sus la scroll -->
+    <!-- Header fix: Rămâne ancorat sus și acoperă camera cu o singură culoare solidă -->
     <header>
         <div class="header-content">
             <img src="Logo.png" alt="BioGloss Logo">
         </div>
     </header>
 
-    <!-- Zona de mijloc (body-ul) -->
+    <!-- Zona de mijloc (body-ul paginii) -->
     <div class="main-content">
-        <!-- Prezentare -->
+        <!-- Prezentare.png -->
         <div class="presentation-container">
             <img src="Prezentare.png" alt="Prezentare Produse BioGloss">
         </div>
 
-        <!-- 10 Produse NP-uri -->
+        <!-- Secțiunea Produse NP-uri -->
         <section class="products-container">
             <h2 class="section-title">Nuanțe NP</h2>
             <div class="products-grid" id="juiceGrid">
@@ -39,7 +30,7 @@
             </div>
         </section>
 
-        <!-- Slide-uri unul lângă altul -->
+        <!-- Secțiunea Slide-uri -->
         <div class="slides-container">
             <div class="slide-box">
                 <img src="Slideunu.png" alt="Slide Unu">
@@ -50,7 +41,7 @@
         </div>
     </div>
 
-    <!-- Footer fix: Îmbracă capacul de jos -->
+    <!-- Footer fix: Rămâne ancorat jos și acoperă capacul de navigare cu o singură culoare solidă -->
     <footer>
         <div class="footer-content">
             <div class="footer-logo-side">
