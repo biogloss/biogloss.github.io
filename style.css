@@ -4,32 +4,33 @@
     margin: 0;
     padding: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    -webkit-text-size-adjust: 100%; /* Previne mărirea ciudată a textului pe iOS */
+    -webkit-text-size-adjust: 100%;
 }
 
 /* Fixare completă a ecranului pe iPhone pentru a elimina jocul stânga-dreapta */
 html, body {
     width: 100%;
     height: 100%;
-    overflow-x: hidden; /* Elimină definitiv balansul stânga-dreapta */
+    overflow-x: hidden;
     background-color: #fdfbfb;
     color: #333;
 }
 
-/* Structură flex pe tot ecranul, asigurând spațiu egal între margini */
+/* Structură flex pe tot ecranul */
 body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
 
-/* Zona de mijloc (corpul site-ului) devine singura zonă care face scroll independent */
+/* Zona de mijloc care face scroll independent */
 .main-content {
     flex: 1;
-    overflow-y: auto; /* Permite scroll-ul doar pe verticală */
+    overflow-y: auto;
     overflow-x: hidden;
-    /* Lasă spațiu pentru ca elementele de sus și jos să nu blocheze vizual ojele sau bannerele */
-    padding-top: calc(60px + env(safe-area-inset-top, 15px));
+    /* Mărit padding-ul de sus (de la 60px la 85px) pentru a împinge tot
+       conținutul complet sub header-ul fix și decupajul de cameră */
+    padding-top: calc(85px + env(safe-area-inset-top, 15px));
     padding-bottom: 25px;
 }
 
@@ -47,7 +48,7 @@ body {
     padding-right: 15px;
 }
 
-/* Header fixat în partea de sus, curge în safe area (peste cameră/notch) */
+/* Header fixat în partea de sus - curge în safe area (peste cameră/notch) */
 header {
     position: fixed;
     top: 0;
@@ -57,7 +58,6 @@ header {
     background-color: #ffffff;
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     
-    /* Împinge logo-ul frumos sub decupajul camerei de pe iPhone */
     padding-top: env(safe-area-inset-top, 12px);
     padding-bottom: 12px;
 }
@@ -75,10 +75,12 @@ header img {
     display: block;
 }
 
-/* Secțiunea Banner Prezentare.png */
+/* Secțiunea Banner Prezentare.png - Pornirea de sub header cu spațiu adăugat */
 .presentation-container {
+    /* Adăugat o margine de sus de 20px pentru a garanta o distanță vizibilă
+       între linia de jos a headerului și începutul imaginii */
     margin-top: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 .presentation-container img {
@@ -180,12 +182,10 @@ footer {
     z-index: 1000;
     
     padding-top: 12px;
-    /* Rozul curge până la marginea fizică a ecranului, iar textul stă
-       la distanță de siguranță față de bara nativă iOS */
     padding-bottom: calc(12px + env(safe-area-inset-bottom, 12px));
 }
 
-/* Structură orizontală pe un singur rând: logo în stânga, text în dreapta */
+/* Structură orizontală: logo în stânga, text în dreapta */
 .footer-content {
     display: flex;
     flex-direction: row;
@@ -206,7 +206,7 @@ footer {
     white-space: nowrap;
 }
 
-/* Adaptabilitate pentru tablete și telefoane mobile */
+/* Adaptabilitate mobil generală */
 @media (max-width: 768px) {
     .slides-container {
         flex-direction: column;
@@ -221,7 +221,7 @@ footer {
     }
 }
 
-/* Ajustare pentru ecrane de iPhone foarte înguste */
+/* Ajustare pentru ecrane de iPhone mici */
 @media (max-width: 380px) {
     .footer-content {
         flex-direction: column;
