@@ -10,10 +10,9 @@ body {
     background-color: #fdfbfb;
     color: #333;
     overflow-x: hidden;
-    /* Se adaugă spațiu pentru ca conținutul central al paginii să nu fie
-       ascuns sub header-ul și footer-ul care sunt fixate pe margini */
-    padding-top: calc(80px + env(safe-area-inset-top, 20px));
-    padding-bottom: calc(150px + env(safe-area-inset-bottom, 20px));
+    /* Redus spațiul de padding deoarece header-ul și footer-ul sunt acum mai mici */
+    padding-top: calc(55px + env(safe-area-inset-top, 20px));
+    padding-bottom: calc(115px + env(safe-area-inset-bottom, 20px));
 }
 
 /* Container general pentru alinierea conținutului pe mijlocul ecranului */
@@ -30,7 +29,7 @@ body {
     padding-right: 15px;
 }
 
-/* Header fix - fundalul curge complet peste camera de sus a telefonului */
+/* Header fix mai mic - fundalul curge complet peste camera de sus a telefonului */
 header {
     position: fixed;
     top: 0;
@@ -40,9 +39,9 @@ header {
     background-color: #ffffff;
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     
-    /* Împinge logo-ul mai jos de zona camerei/notch-ului pe mobil */
-    padding-top: env(safe-area-inset-top, 20px);
-    padding-bottom: 15px;
+    /* Padding redus la 8px pentru o dimensiune mai mică și mai elegantă */
+    padding-top: env(safe-area-inset-top, 15px);
+    padding-bottom: 8px;
 }
 
 /* Aliniere logo în header pe partea stângă */
@@ -52,16 +51,17 @@ header {
     align-items: center;
 }
 
+/* Dimensiune redusă pentru logo-ul principal (de la 250px la 160px) */
 header img {
-    max-width: 250px;
+    max-width: 160px;
     height: auto;
     display: block;
 }
 
 /* Secțiunea Banner Prezentare.png */
 .presentation-container {
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 .presentation-container img {
@@ -73,29 +73,29 @@ header img {
 
 /* Secțiunea Grilă Produse NP-uri */
 .products-container {
-    margin-top: 40px;
-    margin-bottom: 40px;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 .section-title {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
     color: #4A5E4E; /* Verdele distinct BioGloss */
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: 600;
 }
 
 .products-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
 }
 
 .product-card {
     background: #ffffff;
     border: 1px solid #f2e7e7;
     border-radius: 12px;
-    padding: 15px;
+    padding: 12px;
     text-align: center;
     box-shadow: 0 4px 20px rgba(0,0,0,0.02);
     transition: transform 0.2s, box-shadow 0.2s;
@@ -118,11 +118,11 @@ header img {
     background-color: #D4A3A3; /* Rozul extras din sticluțe */
     color: #ffffff;
     text-decoration: none;
-    padding: 12px 24px;
-    margin-top: 15px;
+    padding: 10px 20px;
+    margin-top: 12px;
     border-radius: 25px;
     font-weight: bold;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     transition: background-color 0.3s, transform 0.1s;
 }
 
@@ -136,10 +136,10 @@ header img {
 
 /* Secțiunea Slide-uri (Trei imagini una lângă alta) */
 .slides-container {
-    margin-top: 50px;
-    margin-bottom: 60px;
+    margin-top: 40px;
+    margin-bottom: 40px;
     display: flex;
-    gap: 20px;
+    gap: 15px;
     justify-content: space-between;
 }
 
@@ -155,7 +155,7 @@ header img {
     box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
-/* Footer fix - fundalul curge complet sub capacul/bara de jos a telefonului */
+/* Footer fix mai mic - cu aceeași înălțime vizuală și structură ca header-ul */
 footer {
     position: fixed;
     bottom: 0;
@@ -165,9 +165,9 @@ footer {
     background-color: #FCE6E6; /* Rozul BioGloss din Logodoi.png */
     border-top: 1px solid #ebd0d0;
     
-    padding-top: 25px;
-    /* Împinge textele mai sus de marginea sistemului de operare de jos */
-    padding-bottom: calc(20px + env(safe-area-inset-bottom, 15px));
+    /* Padding optimizat pentru o dimensiune egală și compactă cu cea a header-ului */
+    padding-top: 15px;
+    padding-bottom: calc(12px + env(safe-area-inset-bottom, 15px));
 }
 
 .footer-content {
@@ -175,16 +175,17 @@ footer {
     flex-direction: column;
 }
 
-/* Zona de Logo din footer - aliniată în stânga */
+/* Zona de Logo din footer - aliniată în stânga și redusă în dimensiune */
 .footer-logo-zone {
     display: flex;
     justify-content: flex-start;
     width: 100%;
-    margin-bottom: 15px;
+    margin-bottom: 8px;
 }
 
+/* Dimensiune redusă la 130px pentru a nu domina vizual zona mică de jos */
 footer .footer-logo-zone img {
-    max-width: 170px;
+    max-width: 130px;
     height: auto;
     display: block;
 }
@@ -197,8 +198,8 @@ footer .footer-logo-zone img {
 
 footer .footer-text-zone p {
     color: #7A6666;
-    font-size: 0.85rem;
-    line-height: 1.5;
+    font-size: 0.8rem;
+    line-height: 1.4;
     margin-bottom: 2px;
 }
 
@@ -209,6 +210,6 @@ footer .footer-text-zone p {
         gap: 15px;
     }
     .section-title {
-        font-size: 1.6rem;
+        font-size: 1.5rem;
     }
 }
