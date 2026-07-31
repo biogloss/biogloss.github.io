@@ -1,0 +1,195 @@
+/* Resetare generală */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #fdfbfb;
+    color: #333;
+    overflow-x: hidden;
+}
+
+/* Container general pentru un conținut aliniat pe centru */
+.presentation-container,
+.products-container,
+.slides-container,
+.header-content,
+.footer-content {
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Header cu suport pentru Safe Area și aliniere stânga */
+header {
+    width: 100%;
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    padding-top: calc(20px + env(safe-area-inset-top));
+    padding-bottom: 20px;
+}
+
+.header-content {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+header img {
+    max-width: 250px;
+    height: auto;
+}
+
+/* Secțiunea Prezentare.png */
+.presentation-container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.presentation-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+}
+
+/* Secțiunea Produse NP-uri */
+.products-container {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #4A5E4E; /* Verdele BioGloss */
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+}
+
+.product-card {
+    background: #ffffff;
+    border: 1px solid #f2e7e7;
+    border-radius: 12px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 25px rgba(0,0,0,0.05);
+}
+
+.product-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Link-ul de plată Stripe */
+.stripe-btn {
+    display: inline-block;
+    background-color: #D4A3A3;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 12px 24px;
+    margin-top: 15px;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+.stripe-btn:hover {
+    background-color: #BD8B8B;
+}
+
+.stripe-btn:active {
+    transform: scale(0.98);
+}
+
+/* Secțiunea Slide-uri (Trei unul lângă altul) */
+.slides-container {
+    margin-top: 50px;
+    margin-bottom: 60px;
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.slide-box {
+    flex: 1;
+    min-width: 0;
+}
+
+.slide-box img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+/* Footer cu structură mixtă (Logo în stânga, text centrat) */
+footer {
+    width: 100%;
+    background-color: #FCE6E6; /* Rozul BioGloss */
+    border-top: 1px solid #ebd0d0;
+    padding-top: 45px;
+    padding-bottom: calc(45px + env(safe-area-inset-bottom));
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Zona de Logo - aliniată strict în stânga */
+.footer-logo-zone {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+footer .footer-logo-zone img {
+    max-width: 190px;
+    height: auto;
+}
+
+/* Zona de Text - complet centrată */
+.footer-text-zone {
+    width: 100%;
+    text-align: center;
+}
+
+footer .footer-text-zone p {
+    color: #7A6666;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    margin-bottom: 5px;
+}
+
+/* Optimizare pentru telefoane mobile */
+@media (max-width: 768px) {
+    .slides-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .section-title {
+        font-size: 1.6rem;
+    }
+}
