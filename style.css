@@ -1,4 +1,4 @@
-/* Resetare generală și blocarea balansului sau mișcării pe tot ecranul */
+/* Resetare generală și eliminare balans stânga-dreapta */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -7,36 +7,34 @@
     -webkit-text-size-adjust: 100%;
 }
 
-/* Forțăm aplicația să se potrivească exact pe dimensiunea fixă a ecranului de iPhone */
+/* Fixare completă a ecranului pe iPhone */
 html, body {
     width: 100%;
     height: 100%;
-    overflow: hidden; /* Oprește balansul general stânga-dreapta și sus-jos */
+    overflow: hidden;
     background-color: #fdfbfb;
     color: #333;
 }
 
-/* Structură fixă de ecran împărțită pe verticală */
+/* Structură pe tot ecranul tip "sandwich" fix */
 body {
     display: flex;
     flex-direction: column;
 }
 
-/* Singura zonă din tot site-ul care are voie să facă scroll nativ */
+/* Zona de mijloc (corpul paginii) face scroll fluid între cele două bare */
 .main-content {
     flex: 1;
     width: 100%;
-    overflow-y: auto; /* Permite derularea conținutului pe verticală */
+    overflow-y: auto;
     overflow-x: hidden;
-    -webkit-overflow-scrolling: touch; /* Oferă scroll lin și natural pe iOS (iPhone) */
+    -webkit-overflow-scrolling: touch;
     
-    /* Distanțe interioare obligatorii (padding) pentru ca prima și ultima imagine
-       să poată fi derulate în afara zonelor acoperite de header și footer */
     padding-top: 20px;
     padding-bottom: 25px;
 }
 
-/* Container general pentru alinierea conținutului pe mijlocul ecranului */
+/* Container general pentru alinierea uniformă a conținutului */
 .presentation-container,
 .products-container,
 .slides-container,
@@ -50,19 +48,17 @@ body {
     padding-right: 15px;
 }
 
-/* Header fix - ancorat sus, fundalul curge complet peste camera telefonului (safe area) */
+/* Header fix - o singură culoare albă solidă continuă peste zona camerei */
 header {
     width: 100%;
-    background-color: #ffffff;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    background-color: #ffffff; /* Alb complet solid, fără umbre separate */
     z-index: 1000;
     
-    /* Protejează logo-ul să nu fie ascuns sub decupajul camerei pe mobil */
     padding-top: env(safe-area-inset-top, 12px);
     padding-bottom: 12px;
 }
 
-/* Aliniere logo în header pe partea stângă */
+/* Aliniere logo în header în stânga */
 .header-content {
     display: flex;
     justify-content: flex-start;
@@ -75,7 +71,7 @@ header img {
     display: block;
 }
 
-/* Secțiunea Prezentare.png - Începe aerisit, liber sub header-ul fix */
+/* Secțiunea Prezentare.png */
 .presentation-container {
     margin-top: 10px;
     margin-bottom: 25px;
@@ -97,7 +93,7 @@ header img {
 .section-title {
     text-align: center;
     margin-bottom: 25px;
-    color: #4A5E4E; /* Verdele distinct BioGloss */
+    color: #4A5E4E; /* Verdele BioGloss */
     font-size: 1.8rem;
     font-weight: 600;
 }
@@ -132,7 +128,7 @@ header img {
 /* Link-ul de plată Stripe sub fiecare produs */
 .stripe-btn {
     display: inline-block;
-    background-color: #D4A3A3; /* Rozul extras din sticluțe */
+    background-color: #D4A3A3; /* Rozul predominant din sticluțe */
     color: #ffffff;
     text-decoration: none;
     padding: 10px 20px;
@@ -153,7 +149,7 @@ header img {
 
 /* Secțiunea Slide-uri (Trei imagini una lângă alta) */
 .slides-container {
-    margin-bottom: 20px; /* Separare discretă față de marginea de jos */
+    margin-bottom: 20px;
     display: flex;
     gap: 15px;
     justify-content: space-between;
@@ -171,20 +167,18 @@ header img {
     box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
-/* Footer fix - ancorat jos, rozul îmbracă complet capacul iPhone (safe area) */
+/* Footer fix - o singură nuanță de roz complet solidă peste capacul de jos */
 footer {
     width: 100%;
-    background-color: #FCE6E6; /* Rozul BioGloss */
-    border-top: 1px solid #ebd0d0;
+    background-color: #FCE6E6; /* Rozul solid, fără linii suplimentare */
     z-index: 1000;
     
     padding-top: 12px;
-    /* Rozul curge complet sub capac, iar conținutul text rămâne
-       la o distanță sigură față de bara nativă iOS de sistem */
+    /* Rozul acoperă complet spațiul fizic de sub bara de navigare de pe iPhone */
     padding-bottom: calc(12px + env(safe-area-inset-bottom, 12px));
 }
 
-/* Structură orizontală pe o singură linie: logo în stânga, text în dreapta */
+/* Structură orizontală: logo în stânga, text în dreapta */
 .footer-content {
     display: flex;
     flex-direction: row;
@@ -220,7 +214,7 @@ footer {
     }
 }
 
-/* Ajustare specială în caz că ecranul de iPhone este extrem de mic */
+/* Ajustare pentru ecrane de iPhone mici */
 @media (max-width: 380px) {
     .footer-content {
         flex-direction: column;
