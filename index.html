@@ -2,20 +2,29 @@
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
+    <!-- Permite site-ului să folosească ecranul complet -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    
+    <!-- Elimină zona gri de sus și o face Albă (la fel ca header-ul) -->
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <!-- Elimină zona gri de jos și o face Roz (la fel ca footer-ul) -->
+    <meta name="theme-color" content="#FCE6E6" media="(prefers-color-scheme: dark)">
+    <!-- Notă: Pentru a forța ambele nuanțe simultan pe iOS, combinăm nuanța principală -->
+    <meta name="theme-color" content="#ffffff">
+
     <title>BioGloss</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Header fix: rămâne la vedere în partea de sus la scroll -->
+    <!-- Header fix: Rămâne sus la scroll -->
     <header>
         <div class="header-content">
             <img src="Logo.png" alt="BioGloss Logo">
         </div>
     </header>
 
-    <!-- Zona de mijloc (body-ul): face scroll fluid sub header și deasupra footer-ului -->
+    <!-- Zona de mijloc (body-ul) -->
     <div class="main-content">
         <!-- Prezentare -->
         <div class="presentation-container">
@@ -41,7 +50,7 @@
         </div>
     </div>
 
-    <!-- Footer fluid: stă la baza paginii, sub toate produsele și slide-urile -->
+    <!-- Footer fix: Îmbracă capacul de jos -->
     <footer>
         <div class="footer-content">
             <div class="footer-logo-side">
