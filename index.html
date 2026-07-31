@@ -8,45 +8,47 @@
 </head>
 <body>
 
-    <!-- Header: Aliniat la stânga și adaptat pentru safe area de sus -->
+    <!-- Header fix: rămâne la vedere în partea de sus la scroll -->
     <header>
         <div class="header-content">
             <img src="Logo.png" alt="BioGloss Logo">
         </div>
     </header>
 
-    <!-- Sub Header: Prezentare -->
-    <div class="presentation-container">
-        <img src="Prezentare.png" alt="Prezentare Produse BioGloss">
+    <!-- Zona de mijloc (body-ul): face scroll fluid sub header și deasupra footer-ului -->
+    <div class="main-content">
+        <!-- Prezentare -->
+        <div class="presentation-container">
+            <img src="Prezentare.png" alt="Prezentare Produse BioGloss">
+        </div>
+
+        <!-- 10 Produse NP-uri -->
+        <section class="products-container">
+            <h2 class="section-title">Nuanțe NP</h2>
+            <div class="products-grid" id="juiceGrid">
+                <!-- Produsele sunt injectate din script.js -->
+            </div>
+        </section>
+
+        <!-- Slide-uri unul lângă altul -->
+        <div class="slides-container">
+            <div class="slide-box">
+                <img src="Slideunu.png" alt="Slide Unu">
+            </div>
+            <div class="slide-box">
+                <img src="Slidedoi.png" alt="Slide Doi">
+            </div>
+        </div>
     </div>
 
-    <!-- 10 Produse NP-uri -->
-    <section class="products-container">
-        <h2 class="section-title"></h2>
-        <div class="products-grid" id="juiceGrid">
-            <!-- Produsele vor fi injectate din script.js -->
-        </div>
-    </section>
-
-    <!-- Sub NP-uri: Slideuri unul lângă altul -->
-    <div class="slides-container">
-        <div class="slide-box">
-            <img src="Slideunu.png" alt="Slide Unu">
-        </div>
-        <div class="slide-box">
-            <img src="Slidedoi.png" alt="Slide Doi">
-        </div>
-    </div>
-
-    <!-- Footer: Logo în stânga, text centrat pe mijloc -->
+    <!-- Footer fluid: stă la baza paginii, sub toate produsele și slide-urile -->
     <footer>
         <div class="footer-content">
-            <div class="footer-logo-zone">
+            <div class="footer-logo-side">
                 <img src="Logodoi.png" alt="BioGloss Logo Footer">
             </div>
-            <div class="footer-text-zone">
-                <p>&copy; 2026 BioGloss - Oje de Unghii. Toate drepturile rezervate.</p>
-                <p>Frumusețe care începe cu grijă.</p>
+            <div class="footer-text-side">
+                <p>&copy; 2026 BioGloss. Toate drepturile rezervate.</p>
             </div>
         </div>
     </footer>
