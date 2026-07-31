@@ -1,4 +1,4 @@
-/* Resetare generală */
+/* Resetare generală și stiluri de bază */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -10,9 +10,13 @@ body {
     background-color: #fdfbfb;
     color: #333;
     overflow-x: hidden;
+    /* Se adaugă spațiu pentru ca conținutul central al paginii să nu fie
+       ascuns sub header-ul și footer-ul care sunt fixate pe margini */
+    padding-top: calc(80px + env(safe-area-inset-top, 20px));
+    padding-bottom: calc(150px + env(safe-area-inset-bottom, 20px));
 }
 
-/* Container general pentru un conținut aliniat pe centru */
+/* Container general pentru alinierea conținutului pe mijlocul ecranului */
 .presentation-container,
 .products-container,
 .slides-container,
@@ -26,15 +30,22 @@ body {
     padding-right: 15px;
 }
 
-/* Header cu suport pentru Safe Area și aliniere stânga */
+/* Header fix - fundalul curge complet peste camera de sus a telefonului */
 header {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
+    z-index: 1000;
     background-color: #ffffff;
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    padding-top: calc(20px + env(safe-area-inset-top));
-    padding-bottom: 20px;
+    
+    /* Împinge logo-ul mai jos de zona camerei/notch-ului pe mobil */
+    padding-top: env(safe-area-inset-top, 20px);
+    padding-bottom: 15px;
 }
 
+/* Aliniere logo în header pe partea stângă */
 .header-content {
     display: flex;
     justify-content: flex-start;
@@ -44,9 +55,10 @@ header {
 header img {
     max-width: 250px;
     height: auto;
+    display: block;
 }
 
-/* Secțiunea Prezentare.png */
+/* Secțiunea Banner Prezentare.png */
 .presentation-container {
     margin-top: 20px;
     margin-bottom: 20px;
@@ -59,7 +71,7 @@ header img {
     box-shadow: 0 4px 15px rgba(0,0,0,0.03);
 }
 
-/* Secțiunea Produse NP-uri */
+/* Secțiunea Grilă Produse NP-uri */
 .products-container {
     margin-top: 40px;
     margin-bottom: 40px;
@@ -68,7 +80,7 @@ header img {
 .section-title {
     text-align: center;
     margin-bottom: 30px;
-    color: #4A5E4E; /* Verdele BioGloss */
+    color: #4A5E4E; /* Verdele distinct BioGloss */
     font-size: 2rem;
     font-weight: 600;
 }
@@ -100,10 +112,10 @@ header img {
     border-radius: 8px;
 }
 
-/* Link-ul de plată Stripe */
+/* Link-ul de plată Stripe sub fiecare produs */
 .stripe-btn {
     display: inline-block;
-    background-color: #D4A3A3;
+    background-color: #D4A3A3; /* Rozul extras din sticluțe */
     color: #ffffff;
     text-decoration: none;
     padding: 12px 24px;
@@ -122,7 +134,7 @@ header img {
     transform: scale(0.98);
 }
 
-/* Secțiunea Slide-uri (Trei unul lângă altul) */
+/* Secțiunea Slide-uri (Trei imagini una lângă alta) */
 .slides-container {
     margin-top: 50px;
     margin-bottom: 60px;
@@ -143,13 +155,19 @@ header img {
     box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
-/* Footer cu structură mixtă (Logo în stânga, text centrat) */
+/* Footer fix - fundalul curge complet sub capacul/bara de jos a telefonului */
 footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
     width: 100%;
-    background-color: #FCE6E6; /* Rozul BioGloss */
+    z-index: 1000;
+    background-color: #FCE6E6; /* Rozul BioGloss din Logodoi.png */
     border-top: 1px solid #ebd0d0;
-    padding-top: 45px;
-    padding-bottom: calc(45px + env(safe-area-inset-bottom));
+    
+    padding-top: 25px;
+    /* Împinge textele mai sus de marginea sistemului de operare de jos */
+    padding-bottom: calc(20px + env(safe-area-inset-bottom, 15px));
 }
 
 .footer-content {
@@ -157,20 +175,21 @@ footer {
     flex-direction: column;
 }
 
-/* Zona de Logo - aliniată strict în stânga */
+/* Zona de Logo din footer - aliniată în stânga */
 .footer-logo-zone {
     display: flex;
     justify-content: flex-start;
     width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 footer .footer-logo-zone img {
-    max-width: 190px;
+    max-width: 170px;
     height: auto;
+    display: block;
 }
 
-/* Zona de Text - complet centrată */
+/* Zona de text din footer - scris normal, centrat pe mijloc */
 .footer-text-zone {
     width: 100%;
     text-align: center;
@@ -179,11 +198,11 @@ footer .footer-logo-zone img {
 footer .footer-text-zone p {
     color: #7A6666;
     font-size: 0.85rem;
-    line-height: 1.6;
-    margin-bottom: 5px;
+    line-height: 1.5;
+    margin-bottom: 2px;
 }
 
-/* Optimizare pentru telefoane mobile */
+/* Adaptabilitate mobil pentru zona centrală a paginii */
 @media (max-width: 768px) {
     .slides-container {
         flex-direction: column;
