@@ -1,28 +1,39 @@
-/* Resetare generală și stiluri de bază */
+/* Resetare generală și protecție împotriva balansului lateral */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    -webkit-text-size-adjust: 100%; /* Previne mărirea ciudată a textului pe iOS */
 }
 
-body {
+/* Fixare completă a ecranului pe iPhone pentru a elimina jocul stânga-dreapta */
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden; /* Elimină definitiv balansul stânga-dreapta */
     background-color: #fdfbfb;
     color: #333;
-    overflow-x: hidden;
+}
+
+/* Structură flex pe tot ecranul, asigurând spațiu egal între margini */
+body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
 
-/* Conținutul din mijloc se extinde pe tot ecranul și primește loc sub header-ul fix */
+/* Zona de mijloc (corpul site-ului) devine singura zonă care face scroll independent */
 .main-content {
     flex: 1;
-    /* Ajustează pornirea conținutului pentru a lăsa spațiu sub camera telefonului și sub header */
-    padding-top: calc(55px + env(safe-area-inset-top, 15px));
+    overflow-y: auto; /* Permite scroll-ul doar pe verticală */
+    overflow-x: hidden;
+    /* Lasă spațiu pentru ca elementele de sus și jos să nu blocheze vizual ojele sau bannerele */
+    padding-top: calc(60px + env(safe-area-inset-top, 15px));
+    padding-bottom: 25px;
 }
 
-/* Container general pentru alinierea conținutului pe mijlocul ecranului */
+/* Container general pentru alinierea uniformă a conținutului */
 .presentation-container,
 .products-container,
 .slides-container,
@@ -36,7 +47,7 @@ body {
     padding-right: 15px;
 }
 
-/* Header fix: Fundalul curge complet în safe area de sus (peste cameră) */
+/* Header fixat în partea de sus, curge în safe area (peste cameră/notch) */
 header {
     position: fixed;
     top: 0;
@@ -46,11 +57,12 @@ header {
     background-color: #ffffff;
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     
+    /* Împinge logo-ul frumos sub decupajul camerei de pe iPhone */
     padding-top: env(safe-area-inset-top, 12px);
     padding-bottom: 12px;
 }
 
-/* Aliniere logo în header pe partea stângă */
+/* Aliniere logo în header în stânga */
 .header-content {
     display: flex;
     justify-content: flex-start;
@@ -65,8 +77,8 @@ header img {
 
 /* Secțiunea Banner Prezentare.png */
 .presentation-container {
-    margin-top: 25px;
-    margin-bottom: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .presentation-container img {
@@ -85,7 +97,7 @@ header img {
 .section-title {
     text-align: center;
     margin-bottom: 25px;
-    color: #4A5E4E; /* Verdele distinct BioGloss */
+    color: #4A5E4E; /* Verdele BioGloss */
     font-size: 1.8rem;
     font-weight: 600;
 }
@@ -141,8 +153,7 @@ header img {
 
 /* Secțiunea Slide-uri (Trei imagini una lângă alta) */
 .slides-container {
-    margin-top: 45px;
-    /* Margine în jos pentru a separa ultimele imagini de începutul footerului fluid */
+    margin-top: 40px;
     margin-bottom: 40px;
     display: flex;
     gap: 15px;
@@ -161,19 +172,20 @@ header img {
     box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
-/* Footer fluid - urmează natural după conținut, nu blochează ecranele */
+/* Footer lipit de marginea de jos (peste capac/bara de navigare iPhone) */
 footer {
     width: 100%;
     background-color: #FCE6E6; /* Rozul BioGloss */
     border-top: 1px solid #ebd0d0;
+    z-index: 1000;
     
-    padding-top: 15px;
-    /* Se extinde în safe area-ul de jos (capacul), dar ține textele protejate */
-    padding-bottom: calc(15px + env(safe-area-inset-bottom, 12px));
-    margin-top: auto;
+    padding-top: 12px;
+    /* Rozul curge până la marginea fizică a ecranului, iar textul stă
+       la distanță de siguranță față de bara nativă iOS */
+    padding-bottom: calc(12px + env(safe-area-inset-bottom, 12px));
 }
 
-/* Așezare pe un singur rând: logo în stânga, text în dreapta */
+/* Structură orizontală pe un singur rând: logo în stânga, text în dreapta */
 .footer-content {
     display: flex;
     flex-direction: row;
@@ -194,7 +206,7 @@ footer {
     white-space: nowrap;
 }
 
-/* Adaptabilitate mobil generală */
+/* Adaptabilitate pentru tablete și telefoane mobile */
 @media (max-width: 768px) {
     .slides-container {
         flex-direction: column;
@@ -209,6 +221,7 @@ footer {
     }
 }
 
+/* Ajustare pentru ecrane de iPhone foarte înguste */
 @media (max-width: 380px) {
     .footer-content {
         flex-direction: column;
